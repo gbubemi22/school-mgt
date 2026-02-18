@@ -1,0 +1,52 @@
+{
+  "name": "soar",
+  "packageManager": "npm@9.6.7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.ts",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc --project tsconfig.json",
+    "start": "npm run build && node --max-old-space-size=1024 dist/app.js",
+    "dev": "nodemon --watch src --ext ts --exec \"npm run start\"",
+    "format": "prettier --write \"**/*.{js,ts,json}\"",
+    "seed:admin": "node --loader ts-node/esm src/app/modules/admin/seedAdmin.ts"
+  },
+  "author": "gbubemi22",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "compression": "^1.8.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "express-fileupload": "^1.5.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "http-status-codes": "^2.3.0",
+    "ioredis": "^5.9.3",
+    "joi": "^18.0.2",
+    "jsonwebtoken": "^9.0.3",
+    "mime-types": "^3.0.2",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.1",
+    "nodemon": "^3.1.11",
+    "otp-generator": "^4.0.1",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.8.1",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/express-fileupload": "^1.5.1",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/mime-types": "^3.0.1",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^25.2.3",
+    "@types/otp-generator": "^4.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
