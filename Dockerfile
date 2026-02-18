@@ -20,11 +20,11 @@ RUN apt-get update -qq && apt-get install --no-install-recommends -y \
     python-is-python3 \
     pkg-config
 
-# Copy package.json and yarn.lock first for dependency installation
-COPY package.json yarn.lock ./
+# Copy package.json and package-lock.json first for dependency installation
+COPY package.json package-lock.json ./
 
 # Install dependencies
-RUN yarn install --frozen-lockfile
+RUN npm ci
 
 # Copy the rest of the application code
 COPY . .
@@ -38,10 +38,10 @@ COPY .env .env
 ENV NODE_OPTIONS="--max-old-space-size=2048"
 
 # Build the application (e.g., compile TypeScript, generate `dist`)
-RUN yarn build
+RUN npm run build
 
 # Remove dev dependencies
-RUN yarn install --production --frozen-lockfile
+RUN npm ci --omit=dev
 
 # Create the final production image
 FROM base AS production
@@ -50,7 +50,7 @@ FROM base AS production
 COPY --from=build /app /app
 
 # Expose the application port
-EXPOSE 6002
+EXPOSE 8000
 
 # Start the application
-CMD ["node", "dist/app/app.js"]
+CMD ["node", "dist/app.js"]

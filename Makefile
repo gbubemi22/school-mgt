@@ -11,23 +11,23 @@ b:
 	npm run build
 
 logs:
-	docker logs -f school-backend
+	sudo docker logs -f school-backend
 
 
 # Build the Docker image
 build:
-	docker build -t school-backend .
+	sudo docker build -t school-backend .
 
 # Stop and remove the existing container (if it exists)
 clean:
-	docker stop school-backend || true && docker rm school-backend || true
+	sudo docker stop school-backend || true && sudo docker rm school-backend || true
 
 # Run the container in production mode with explicit environment variables
 run-production:
-	docker run -d \
+	sudo docker run -d \
 		--restart always \
 		--name school-backend \
-		-p 6002:6002 \
+		-p 8000:8000 \
 		-e REDIS_URL=localhost:6379 \
 		-e PROD_REDIS_URL=188.166.174.59:6379 \
 		-e NODE_ENV=production \
@@ -35,10 +35,10 @@ run-production:
 
 # Run the container using the .env file (for development or other environments)
 run-env:
-	docker run -d \
+	sudo docker run -d \
 		--restart always \
 		--name school-backend \
-		-p 6002:6002 \
+		-p 8000:8000 \
 		--env-file .env \
 		school-backend
 

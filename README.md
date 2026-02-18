@@ -13,6 +13,17 @@ Bearer token in `Authorization` header.
 Example:
 `Authorization: Bearer <token>`
 
+**Environment Example**
+Create `.env` with:
+```
+PORT=8000
+MONGO_URI=mongodb://localhost:27017/soar
+ACCESS_TOKEN_SECRET=change_me
+JWT_TOKEN_VALIDITY=7d
+SERVICE_NAME=soar
+BASE_URL=http://localhost:8000
+```
+
 **Routes**
 
 **User Auth** (`/v1/auth`)
