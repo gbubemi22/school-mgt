@@ -4,9 +4,16 @@ School Management API.
 
 **API Docs**
 Swagger UI: `http://localhost:8000/api-docs`
+Swagger UI:  `https://school-mgt-cpcn.onrender.com/api-docs`
 
 **Base URL**
 `http://localhost:8000`
+`https://school-mgt-cpcn.onrender.com/`
+
+
+SuperAdmin Login
+ Email: `admin@soar.com`
+ Password: `Password1!`
 
 **Auth**
 Bearer token in `Authorization` header.
