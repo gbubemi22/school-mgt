@@ -29,11 +29,6 @@ RUN npm ci
 # Copy the rest of the application code
 COPY . .
 
-# Copy env file
-COPY .env .env
-
-
-
 # Increase memory limit for Node.js processes
 ENV NODE_OPTIONS="--max-old-space-size=2048"
 
