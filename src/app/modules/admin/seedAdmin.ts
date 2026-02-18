@@ -16,6 +16,7 @@ const seedAdmin = async () => {
     const defaultEmail = process.env.DEFAULT_EMAIL as string;
     const roleName = "SUPER-ADMIN";
     const roleDoc = await Role.findOne({ name: roleName });
+    console.log("Role document found for SUPER-ADMIN:", roleDoc);
 
     if (!roleDoc) {
       throw new Error(

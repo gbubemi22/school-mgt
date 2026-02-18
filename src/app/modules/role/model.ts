@@ -19,7 +19,20 @@ const RoleSchema = new mongoose.Schema<RoleDocument>({
         ref: "Permission",
         required: false,
     }],
-});
+},
+{
+    timestamps: true,
+    collection: "Role",
+    collation: {
+        locale: "en",
+        strength: 1,
+        caseLevel: true,
+        numericOrdering: true,
+    },
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true },
+}
+);
 
 
 

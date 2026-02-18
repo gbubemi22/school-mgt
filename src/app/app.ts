@@ -13,6 +13,8 @@ import { connectDB } from "./utils/util.js";
 import { generalLimiter } from "./middleware/rateLimiter.js";
 
 // import routes
+
+import swaggerSetup from "./utils/swagger.js";
 import route from "./router/index.js";
 
 import express, { Application, Request, Response, NextFunction } from "express";
@@ -93,6 +95,10 @@ app.get("/", (req, res) => {
   });
 });
 
+
+// Swagger docs
+swaggerSetup(app);
+
 // THEN use your main router
 app.use(route);
 
@@ -110,6 +116,7 @@ const start = async () => {
     await connectDB(process.env.MONGO_URI as string);
     server = app.listen(port, () => {
       console.log(`⚡️ Server⚡️Listening on port ${port}...`);
+      console.log(`📚 Swagger docs available at http://localhost:${port}/api-docs`);
     });
   } catch (error) {
     console.log("An error occurred:", error);

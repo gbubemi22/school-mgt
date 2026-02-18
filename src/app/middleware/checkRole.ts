@@ -1,5 +1,5 @@
 import User from "../modules/user/model.js";
-import Admin, { Role } from "../modules/admin/model.js";
+import Admin from "../modules/admin/model.js";
 import { Role as RoleModel } from "../modules/role/model.js";
 import mongoose from "mongoose";
 import { Request, Response, NextFunction } from "express";
@@ -50,7 +50,7 @@ export const getUserPermissions = async (userId: mongoose.Types.ObjectId | strin
 
 
 export const authorizeRoles =
-  (...allowedRoles: (Role | string)[]) =>
+  (...allowedRoles: string[]) =>
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const user = req.user;
 

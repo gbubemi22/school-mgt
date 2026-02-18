@@ -26,12 +26,7 @@ export type AdminDocument = mongoose.Document & {
   generateJWT(): Promise<string>;
 };
 
-export enum Role {
-  SUPER_ADMIN = "SUPER-ADMIN",
-  ADMIN = "ADMIN",
-  SCHOOL_ADMIN = "SCHOOL-ADMIN",
-  SUPPORT = "SUPPORT",
-}
+
 
 const AdminSchema = new mongoose.Schema<AdminDocument>(
   {
@@ -52,11 +47,7 @@ const AdminSchema = new mongoose.Schema<AdminDocument>(
       type: String,
       required: true,
     },
-    role: {
-      type: String,
-      enum: Object.values(Role),
-      default: Role.ADMIN,
-    },
+
     roleId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Role",
@@ -64,13 +55,13 @@ const AdminSchema = new mongoose.Schema<AdminDocument>(
     },
 
     otp: {
-     type: String,
-     required: false,
-   },
-   expired_at: {
-     type: Date,
-     required: false,
-   },
+      type: String,
+      required: false,
+    },
+    expired_at: {
+      type: Date,
+      required: false,
+    },
   },
   {
     timestamps: true,

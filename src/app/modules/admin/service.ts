@@ -4,7 +4,7 @@ import {
   NotFoundError,
   UnauthorizedError,
 } from "../../utils/error.js";
-import Admin, { AdminDataType, Role } from "./model.js";
+import Admin, { AdminDataType } from "./model.js";
 import { generateOTP, getOtpExpiryTime } from "../../utils/util.js";
 import { hash } from "../../utils/bcryptiUtils.js";
 import { createSession, deleteSession } from "../../utils/session.js";
